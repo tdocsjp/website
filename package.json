@@ -5,9 +5,12 @@
     "dev": "vitepress dev",
     "build": "vitepress build",
     "preview": "vitepress preview",
-    "pull": "git submodule update --init --remote --recursive"
+    "pull": "git submodule update --init --remote --recursive",
+    "lint": "biome check .",
+    "fix": "biome check --write ."
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.5.15",
     "vitepress": "^1.6.3",
     "vitepress-sidebar": "^1.31.1"
   }
