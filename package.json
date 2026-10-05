@@ -1,0 +1,14 @@
+{
+  "name": "tdocsjp-website",
+  "private": true,
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview",
+    "pull": "git submodule update --init --remote --recursive"
+  },
+  "devDependencies": {
+    "vitepress": "^1.6.3",
+    "vitepress-sidebar": "^1.31.1"
+  }
+}
