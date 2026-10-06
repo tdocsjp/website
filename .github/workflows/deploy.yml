@@ -18,7 +18,7 @@ jobs:
         # 1ターゲット = 1 Cloudflare Pages プロジェクト = 1サブドメイン
         target: [portal, rust, go, nodejs]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           submodules: recursive
           fetch-depth: 0
