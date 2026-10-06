@@ -9,12 +9,14 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # 1ターゲット = 1 Cloudflare Pages プロジェクト = 1サブドメイン
+        target: [portal, rust, go, nodejs]
     steps:
       - uses: actions/checkout@v4
         with:
@@ -26,17 +28,11 @@ jobs:
           bun-version: latest
       - run: bun install --frozen-lockfile
       - run: bun run build
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: .vitepress/dist
-
-  deploy:
-    needs: build
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+        env:
+          TARGET: ${{ matrix.target }}
+      - run: >-
+          bunx wrangler@4 pages deploy .vitepress/dist/${{ matrix.target }}
+          --project-name tdocsjp-${{ matrix.target }} --branch main
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
