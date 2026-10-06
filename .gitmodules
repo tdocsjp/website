@@ -1,0 +1,9 @@
+[submodule "rust"]
+	path = rust
+	url = https://github.com/tdocsjp/rust.git
+[submodule "go"]
+	path = go
+	url = https://github.com/tdocsjp/go.git
+[submodule "nodejs"]
+	path = nodejs
+	url = https://github.com/tdocsjp/nodejs.git

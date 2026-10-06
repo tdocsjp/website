@@ -8,5 +8,13 @@
       "!.vitepress/dist"
     ]
   },
-  "formatter": { "indentStyle": "space" }
+  "formatter": { "indentStyle": "space" },
+  "overrides": [
+    {
+      "includes": ["**/*.vue"],
+      "linter": {
+        "rules": { "correctness": { "noUnusedVariables": "off" } }
+      }
+    }
+  ]
 }

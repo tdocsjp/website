@@ -7,11 +7,15 @@
     "preview": "vitepress preview",
     "pull": "git submodule update --init --remote --recursive",
     "lint": "biome check .",
+    "typecheck": "vue-tsc --noEmit",
     "fix": "biome check --write ."
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.15",
+    "@types/node": "^26.6.4",
+    "typescript": "^5.9.3",
     "vitepress": "^1.6.3",
-    "vitepress-sidebar": "^1.31.1"
+    "vitepress-sidebar": "^1.31.1",
+    "vue-tsc": "^3.3.12"
   }
 }
